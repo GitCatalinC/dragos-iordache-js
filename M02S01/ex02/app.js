@@ -9,7 +9,9 @@ class Vehicle {
   }
 
   displaySpeed() {
-    console.log(`Viteza curenta este: ${this.speed}`);
+    console.log(
+      `Viteza curenta a vehiculului ${this.make} este: ${this.speed}`,
+    );
   }
 
   getSpeed(format) {
@@ -30,19 +32,26 @@ class Vehicle {
     this.setSpeed(0);
   }
   setSpeed(speed) {
+    // if (speed > this.topSpeed) {
+    //   this.speed = this.topSpeed;
+
+    //   this.displaySpeed();
+    //   return;
+    // }
+
+    // if (speed < this.topReverseSpeed) {
+    //   this.speed = this.topReverseSpeed;
+    //   this.displaySpeed();
+    //   return;
+    // }
+    // this.speed = speed;
     if (speed > this.topSpeed) {
       this.speed = this.topSpeed;
-
-      this.displaySpeed();
-      return;
-    }
-
-    if (speed < this.topReverseSpeed) {
+    } else if (speed < this.topReverseSpeed) {
       this.speed = this.topReverseSpeed;
-      this.displaySpeed();
-      return;
+    } else {
+      this.speed = speed;
     }
-    this.speed = speed;
     this.displaySpeed();
   }
 }
