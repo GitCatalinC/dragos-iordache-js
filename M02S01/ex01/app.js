@@ -67,8 +67,11 @@ console.warn('Ex1');
 let opel = new Car('Opel', 'red', 4, 3);
 
 var cars = [opel, audi];
-for (i = 0; i < cars.length; i++) {
-  console.log(
-    `Masina este marca ${cars[i].make} si se deplaseaza cu viteza ${cars[i].speed}`,
-  );
-}
+// for (i = 0; i < cars.length; i++) {
+//   console.log(
+//     `Masina este marca ${cars[i].make} si se deplaseaza cu viteza ${cars[i].speed}`,
+//   );
+// }
+cars.forEach((item) => {
+  console.log(`Masina este marca ${item.make} si are viteza ${item.speed} `);
+});
