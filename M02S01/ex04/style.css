@@ -2,11 +2,11 @@
   width: 200px;
   height: 200px;
   border: 1px solid #000;
-  position: absolute; 
+  position: absolute;
 }
 
 .car {
-  position: absolute; 
+  position: absolute;
   bottom: 70px;
   left: 10px;
 }
@@ -32,7 +32,7 @@
 }
 
 .car__wheel {
-  position: absolute; 
+  position: absolute;
   bottom: -20px;
 }
 
@@ -64,10 +64,10 @@
 }
 
 .light {
-  position: absolute; 
+  position: absolute;
   width: 15px;
-  height: 15px; 
-  background-color: #FFF; 
+  height: 15px;
+  background-color: #FFF;
   border-radius: 10px;
 }
 
@@ -81,4 +81,12 @@
 
 .light--back.light--on {
   background-color: #F00;
+}
+
+.light--front.hazard--on {
+  background-color: #ffa600;
+}
+
+.light--back.hazard--on {
+  background-color: #ffa600;
 }

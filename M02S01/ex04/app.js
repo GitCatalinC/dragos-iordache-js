@@ -5,12 +5,14 @@ class Car {
     color = 'black',
     wheelColor = 'black',
     capColor = 'white',
+    areHazardsOn = false,
   ) {
     this.left = left;
     this.top = top;
     this.color = color;
     this.wheelColor = wheelColor;
     this.capColor = capColor;
+    this.areHazardsOn = areHazardsOn;
   }
   frame = document.createElement('div');
   car = document.createElement('div');
@@ -22,6 +24,7 @@ class Car {
   wheelBack = document.createElement('div');
   hubCapFront = document.createElement('div');
   hubCapBack = document.createElement('div');
+  hazardLights;
   render() {
     this.frame.classList.add('frame');
     this.frame.style.cssText = `left:${this.left}px; top:${this.top}px;`;
@@ -66,7 +69,33 @@ class Car {
 
     document.body.append(this.frame);
   }
+  engageBreak() {
+    this.lightBack.classList.add('light--on');
+  }
+  disengageBreak() {
+    this.lightBack.classList.remove('light--on');
+  }
+  toggleHazards() {
+
+    if (this.areHazardsOn === false) {
+      this.areHazardsOn = true;
+      this.hazardLights=setInterval(() => {
+        this.lightFront.classList.toggle('hazard--on');
+        this.lightBack.classList.toggle('hazard--on');
+      }, 500);
+      return;
+
+    }
+    if (this.areHazardsOn === true) {
+      this.areHazardsOn = false;
+      clearInterval(this.hazardLights);
+      this.lightFront.classList.remove('hazard--on');
+      this.lightBack.classList.remove('hazard--on')
+      return;
+    }
+  }
 }
+
 
 let car = new Car();
 

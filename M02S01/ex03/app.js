@@ -5,6 +5,7 @@ let Car = {
   speed: 0,
   topspeed: 140,
   topReverseSpeed: -50,
+  areLightsOn: false,
   displaySpeed: function () {
     console.log(
       `Vehiculul ${this.make} se deplasa cu viteza ${this.speed}km/h`,
@@ -26,6 +27,12 @@ let Car = {
     }
     this.displaySpeed();
   },
+  turnLightsOn: function () {
+    this.areLightsOn = true;
+  },
+  turnLightsOff: function () {
+    this.areLightsOn = false;
+  }
 };
 
 let audi = Object.create(Car);
