@@ -24,7 +24,46 @@ class Car {
   wheelBack = document.createElement('div');
   hubCapFront = document.createElement('div');
   hubCapBack = document.createElement('div');
+  hazardInterval = 500;
+  timeoutId = 0;
   hazardLights;
+
+  toggleHazards1() {
+    if ()
+    this.toggleLights();
+
+    this.timeoutId = setTimeout(() => {
+      this.toggleHazards1();
+    }, this.hazardInterval);
+  }
+
+  toggleLights() {
+    this.lightFront.classList.toggle('light--on');
+    this.lightBack.classList.toggle('light--on');
+  }
+
+  move(left = 0, top = 0) {
+    left = parseInt(left);
+    top = parseInt(top);
+
+    if (isNaN(left) || isNaN(top)) {
+      left = 0;
+      top = 0;
+    }
+
+    this.frame.style.left = `${left}px`;
+    this.frame.style.top = `${top}px`;
+  }
+
+  changeColor(object, color = '#000') {
+    if (!this.hasOwnProperty(object) || object.nodename === undefined) {
+      console.warn(`Nu am gasit obiectul ${object} pe aceasta instanta`);
+
+      return;
+    }
+    this[object].style.backgroundColor = color;
+  }
+
   render() {
     this.frame.classList.add('frame');
     this.frame.style.cssText = `left:${this.left}px; top:${this.top}px;`;
@@ -76,26 +115,23 @@ class Car {
     this.lightBack.classList.remove('light--on');
   }
   toggleHazards() {
-
     if (this.areHazardsOn === false) {
       this.areHazardsOn = true;
-      this.hazardLights=setInterval(() => {
+      this.hazardLights = setInterval(() => {
         this.lightFront.classList.toggle('hazard--on');
         this.lightBack.classList.toggle('hazard--on');
       }, 500);
       return;
-
     }
     if (this.areHazardsOn === true) {
       this.areHazardsOn = false;
       clearInterval(this.hazardLights);
       this.lightFront.classList.remove('hazard--on');
-      this.lightBack.classList.remove('hazard--on')
+      this.lightBack.classList.remove('hazard--on');
       return;
     }
   }
 }
-
 
 let car = new Car();
 
