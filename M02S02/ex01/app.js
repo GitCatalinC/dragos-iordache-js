@@ -63,3 +63,55 @@ $('<h2>', {
 let h2 = document.createElement('h2');
 h2.innerText = 'Message 2';
 document.querySelector('.container').prepend(h2);
+
+
+//Tema
+//Creaza un div cu clasa navigation si adauga-l dupa divul anterior, folosind metoda .after() https://api.jquery.com/after/
+// Creeaza un element de tip ancora cu textul Primul Link si clasa nav-link si adauga-l la divul cu clasa navigation.
+// Creeaza un element h2 cu textul “Navigatie” si folosind metoda .before() adauga-l la divul cu clasa navigation. Selectorul lui before va trebui sa fie selectorul ancorei pentru a functiona corect. Exemplu: .navigation .nav-link
+// https://api.jquery.com/before/
+// Creeaza un element de tip sup cu textul 1 si folosind metoda .prepend() adauga-l in ancora .nav-link
+// https://api.jquery.com/prepend
+
+let $nav = $('<div>', {
+  class: 'navigation',
+}).insertAfter('.container')
+
+let $first = $('<a>', {
+  class:'nav-link',
+  text:'Primul link',
+}).appendTo($nav)
+
+let $navigatie = $('<h2>', {
+  text:'Navigatie',
+})
+
+$($first).before($navigatie)
+
+$($first).prepend($('<sup>', {
+  text:'1',
+}))
+
+let $tMare = $('<h1>', {
+  text:'Invat jQuery',
+})
+
+$('.container').before($tMare)
+
+
+//Aici am incercat initial sa fac $link si $documentation iar text in $documentation sa folosesc 'special ticks' sa introduc ${$link}, dar obtin object-object
+
+let $link = $('<a>', {
+  text:' aici',
+  target:'_blank',
+  href: 'https://api.jquery.com/',
+})
+
+
+let $documentation = $('<p>', {
+  text:`Documentia jQuery poate fi gasita`,
+})
+
+$('body').prepend($documentation)
+
+$($documentation).append($link)

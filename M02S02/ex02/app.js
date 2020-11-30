@@ -1,3 +1,4 @@
+
 const formId = 'personForm';
 const createSkillUl = () => {
   const ulId = 'skills-list';
@@ -9,11 +10,14 @@ const createSkillUl = () => {
     });
 
     $(`#${formId}`).after($ul);
-
+//nu merge adaugatul. as fi incercat $ul.remove()
     $ul.on('click', 'button', (event) => {
       const $element = $(event.currentTarget);
 
       $element.parent().remove();
+      if ( $('li').length === 0) {
+        $('ul').remove()
+      }
     });
   }
 
