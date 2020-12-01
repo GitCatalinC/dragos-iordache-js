@@ -1,26 +1,63 @@
+const createTextCaptureInput = (placeholder = 'Adauga o valoare') => {
+  const $widget = $('<div>', {
+    class: 'text-wdiget',
+  });
+
+  $widget
+    .append(
+      $('<input>', {
+        type: 'text',
+        placeholder,
+      }),
+    )
+    .append();
+  return $widget;
+};
 
 const formId = 'personForm';
 const createSkillUl = () => {
   const ulId = 'skills-list';
   let $ul = $(`#${ulId}`);
-
+  let editMode = false;
   if ($ul.length !== 1) {
     $ul = $('<ul>', {
       id: ulId,
     });
 
     $(`#${formId}`).after($ul);
-//nu merge adaugatul. as fi incercat $ul.remove()
+    //nu merge adaugatul. as fi incercat $ul.remove()
     $ul.on('click', 'button', (event) => {
       const $element = $(event.currentTarget);
 
       $element.parent().remove();
-      if ( $('li').length === 0) {
-        $('ul').remove()
+      if ($('li').length === 0) {
+        $('ul').remove();
       }
     });
   }
+  $ul.on('click', '.edit', (event) => {
+    if (editMode === true) {
+      return;
+    }
+    editMode = true;
+    const $element = $(event.currentTarget);
+    const $parentLi = element.parent();
+    const $widget = createTextCaptureInput('Modifica numele skill-ului');
 
+    $parentLi.prepend($widget);
+  });
+  $ul.on('click', '.text-widget .cancel', (event) => {
+    editMode = false;
+    $(event.currentTarget).parent().remove();
+  });
+  $ul.on('click', '.text-widget .save', function () {
+    $saveButton = $(this);
+    let value = $saveButton.prev().val();
+    let $parentLi = $saveButton.parents('li');
+    $parentLi.find('.skill-text').text(value);
+    editMode = false;
+    $saveButton.parent().remove();
+  });
   return $ul;
 };
 
@@ -45,17 +82,23 @@ $(document).ready(() => {
   $skillInput.next().on('click', () => {
     const value = $skillInput.val(); // DOM -> elem.value
     const $skillsUl = createSkillUl();
-    const $skillLi = $('<li>', {
-      text: value,
-    })
+    const $skillLi = $('<li>')
+      .append(
+        $('<span>', {
+          class: 'skill-text',
+          text: value,
+        }),
+      )
       .append(
         $('<button>', {
           text: '-',
+          class: 'delete',
         }),
       )
       .append(
         $('<button>', {
           text: 'Edit',
+          class: 'edit',
         }),
       );
 

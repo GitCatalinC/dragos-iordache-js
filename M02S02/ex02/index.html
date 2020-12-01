@@ -42,14 +42,49 @@
       <input
         type="text"
         name="skills"
-        placeholder="skills"
+        id="skills"
+        placeholder="Skills"
       >
       <button type="button">+</button>
     </fieldset>
+
+    <div>
+      <input
+        type="checkbox"
+        id="pet-checkbox"
+        name="pet-checkbox"
+      ><label for="pet-checkbox">Are animale de casa</label>
+    </div>
+
+    <fieldset style="display: none;">
+      <legend>Animale de case</legend>
+      <input
+        type="text"
+        name="pet-name"
+        placeholder="Nume animal"
+      > <br>
+      <input
+        type="text"
+        name="pet-species"
+        placeholder="Rasa animal"
+      > <br>
+      <input
+        type="text"
+        name="pet-age"
+        placeholder="Varsta animal"
+      > <br>
+
+      <button
+        type="submit"
+        id="add-pet"
+      >Adauga animal</button>
+    </fieldset>
   </form>
-  <ul></ul>
+
   <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="app.js"></script>
+  <script src="app2.js"></script>
+
+
 </body>
 
 </html>
