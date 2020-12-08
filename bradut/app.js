@@ -1,5 +1,5 @@
 class xmasTree {
-  constructor(topP, leftP, size, globe = 0, color = 'limegreen') {
+  constructor(topP, leftP, size = 500, globe = 0, color = 'limegreen') {
     this.topP = topP;
     this.leftP = leftP;
     this.size = size;

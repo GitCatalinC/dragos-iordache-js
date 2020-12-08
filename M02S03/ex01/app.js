@@ -7,13 +7,15 @@ class Car {
     this.domId = `${this.make.toLowerCase()}${this.color}${Date.now()}`;
     this.displayDomSpeed();
   }
-  accelerate() {
-    this.speed++;
+
+  accelerate(speed = 1) {
+    this.speed = this.speed + speed;
+    this.displayDomSpeed();
     return this;
   }
-  decelerate() {
-    this.speed--;
-
+  decelerate(speed = 1) {
+    this.speed = this.speed - speed;
+    this.displayDomSpeed();
     return this;
   }
   displayDomSpeed() {
@@ -25,16 +27,14 @@ class Car {
     speedDial.innerText = `${this.speed}km/h`;
     document.body.append(speedDial);
   }
+  setSpeed(value) {
+    this.speed = value;
+    this.displayDomSpeed();
+  }
 }
 
 var audi = new Car('Audi', 'black', 4, 50);
 
-audi
-  .accelerate()
-  .accelerate()
-  .accelerate()
-  .accelerate()
-  .accelerate()
-  .decelerate()
-  .decelerate()
-  .decelerate();
+audi.accelerate(12).decelerate(3).decelerate(4);
+
+audi.setSpeed(4).accelerate(1);

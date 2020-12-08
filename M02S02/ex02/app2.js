@@ -188,3 +188,27 @@ $(document).ready(() => {
     $petDetails.text(message);
   });
 });
+
+const $addFriend = $('#addFriend');
+let $friendName = $('#friendName');
+let $friendSurname = $('#friendSurname');
+let $friendAge = $('#friendAge');
+$addFriend.on('click', () => {
+  let $friendList = $('<ul>', {
+    id: `${$friendName.val()}friend`,
+  });
+  $friendList.on('click', '.delete', (event) => {
+    $(event.currentTarget).parent().remove();
+    if ($('ul>li').length === 0) {
+      $('ul').remove();
+    }
+  });
+  $friendList.on('click', '.edit', (event) => {
+    $(event.currentTarget).parent().text(prompt('Editeaza'));
+  });
+  // let friendMessage = `<li id='${$friendName.val()}'>${$friendName.val()}<button onclick='${$friendName.val()}.remove()'>-</button></li> <li id='${$friendSurname.val()}'>${$friendSurname.val()}<button onclick='${$friendSurname.val()}.remove()'>-</button></li> <li id='t${$friendAge.val()}'>${$friendAge.val()}<button onclick='t${$friendAge.val()}.remove()'>-</button></li>`;
+
+  let friendMessage = `<li id='${$friendName.val()}'>${$friendName.val()}<button class="delete">-</button><button class='edit'>Edit</button></li> <li id='${$friendSurname.val()}'>${$friendSurname.val()}<button class="delete">-</button></li> <li id='t${$friendAge.val()}'>${$friendAge.val()}<button class="delete">-</button></li>`;
+  $friendList.html(friendMessage);
+  $friendList.appendTo('body');
+});
