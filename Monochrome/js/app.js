@@ -5,6 +5,10 @@ if (lookbookPage !== null) {
   const form = document.querySelector(`.${formClass}`);
   let pristine = null;
   if (form !== null) {
-    pristine = new pristine(form);
+    pristine = new Pristine(form);
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      pristine.validate();
+    });
   }
 }
